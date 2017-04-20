@@ -3,21 +3,14 @@ package main
 import "fmt"
 
 func fibonacci() func() int {
-	var fib [10]int
-
-	fib[0] = 0
-	fib[1] = 1
-
-	for i := 2; i < 10; i++ {
-		fib[i] = fib[i-2] + fib[i-1]
-	}
-
-	i := -1
+	a, b := 0, 1
 
 	return func() int {
-		i++
+		r := a
 
-		return fib[i]
+		a, b = b, a+b
+
+		return r
 	}
 }
 
