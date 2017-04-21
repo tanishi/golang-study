@@ -12,11 +12,11 @@ func (e ErrNegativeSqrt) Error() string {
 }
 
 func Sqrt(x float64) (float64, error) {
-	z := 1.0
-
 	if x < 0 {
 		return 0, ErrNegativeSqrt(x)
 	}
+
+	z := 1.0
 
 	for {
 		if math.Abs(z-(z-(math.Pow(z, 2)-x)/(2*z))) <= 1e-10 {
